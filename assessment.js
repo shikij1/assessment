@@ -20,7 +20,7 @@ assessmentButton.onclick = () => {
   const result = assessment(userName);
   paragraph.innerText = result;
   resultDivided.appendChild(paragraph);
-  // TODO ツイートエリアの作成
+
   removeAllChildren(tweetDivided);
   const anchor = document.createElement("a");
   const hrefValue =
@@ -30,10 +30,14 @@ assessmentButton.onclick = () => {
 
   anchor.setAttribute("href", hrefValue);
   anchor.className = "twitter-hashtag-button";
-  anchor.setAttribute("data-text", "診断結果の文章");
+  anchor.setAttribute("data-text", result);
   anchor.innerText = "Tweet #あなたのいいところ";
-
   tweetDivided.appendChild(anchor);
+
+  // widgets.js の設定
+  const script = document.createElement("script");
+  script.setAttribute("src", "https://platform.twitter.com/widgets.js");
+  tweetDivided.appendChild(script);
 };
 const answers = [
   "{userName}のいいところは声です。{userName}の特徴的な声は皆を惹きつけ、心に残ります。",
