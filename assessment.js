@@ -9,6 +9,7 @@ assessmentButton.onclick = () => {
     return;
   }
   // 診断結果表示エリアの作成
+  removeAllChildren(resultDivided);
   const header = document.createElement("h3");
   removeAllChildren(resultDivided);
 
@@ -20,6 +21,19 @@ assessmentButton.onclick = () => {
   paragraph.innerText = result;
   resultDivided.appendChild(paragraph);
   // TODO ツイートエリアの作成
+  removeAllChildren(tweetDivided);
+  const anchor = document.createElement("a");
+  const hrefValue =
+    "https://twitter.com/intent/tweet?button_hashtag=" +
+    encodeURIComponent("あなたのいいところ") +
+    "&ref_src=twsrc%5Etfw";
+
+  anchor.setAttribute("href", hrefValue);
+  anchor.className = "twitter-hashtag-button";
+  anchor.setAttribute("data-text", "診断結果の文章");
+  anchor.innerText = "Tweet #あなたのいいところ";
+
+  tweetDivided.appendChild(anchor);
 };
 const answers = [
   "{userName}のいいところは声です。{userName}の特徴的な声は皆を惹きつけ、心に残ります。",
