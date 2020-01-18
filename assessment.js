@@ -88,6 +88,12 @@ function assessment(userName) {
   return result;
 }
 
+userNameInput.onkeydown = (event) => {
+  if (event.key === 'Enter') {
+    assessmentButton.onclick();
+  }
+};
+
 // テストコード
 console.assert(
   assessment('太郎') === '太郎のいいところは決断力です。太郎がする決断にいつも助けられる人がいます。',
